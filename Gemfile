@@ -7,13 +7,14 @@ gem 'devise'
 
 # frontend
 gem 'slim-rails'
-gem 'sass-rails', '~> 4.0.3'
+gem 'sass-rails'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'acts_as_votable', '~> 0.10.0'
+gem 'bootstrap-sass', '~> 3.3.5.1'
 
 # doc
 gem 'sdoc', '~> 0.4.0',          group: :doc
