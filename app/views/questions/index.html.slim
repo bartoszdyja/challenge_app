@@ -1,5 +1,6 @@
 h2 Top Questions
 
-= render @questions
+table.table.table-condensed.table-striped
+	= render @questions
 
 = link_to 'New Question', new_question_path

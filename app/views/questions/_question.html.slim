@@ -1,3 +1,11 @@
-.question id="question-#{question.id}"
-  .title= link_to question.title, question_path(question)
-  = render "questions/details", question: question
+tr
+	th.col-sm-1
+		' VOTES
+	th.col-sm-1
+		' ANSWERS	
+	th.col-sm-4
+		=link_to question.title, question_path(question)
+
+	th
+		' dsf
+
