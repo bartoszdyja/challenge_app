@@ -3,13 +3,12 @@ class QuestionsController < ApplicationController
   before_action :set_question, only: [:show, :edit, :update, :destroy]
 
   def index
-    @questions = Question.all
+    @questions = Question.all.order('created_at DESC')
   end
 
   def show
     @answer = Answer.new
-    count=@question.countclick+1
-    @question.update(countclick: count)
+    @question.click
   end
 
   def new

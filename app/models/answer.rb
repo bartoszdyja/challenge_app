@@ -6,4 +6,8 @@ class Answer < ActiveRecord::Base
   belongs_to :user
 
   validates_presence_of :contents
+
+  def click
+  	self.increase! :countclick
+  end
 end

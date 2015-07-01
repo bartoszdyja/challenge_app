@@ -3,4 +3,8 @@ class Question < ActiveRecord::Base
   has_many :answers
 
   validates_presence_of :title
+
+  def click
+  	self.increment! :countclick
+  end
 end
