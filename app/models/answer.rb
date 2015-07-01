@@ -7,7 +7,5 @@ class Answer < ActiveRecord::Base
 
   validates_presence_of :contents
 
-  def click
-  	self.increase! :countclick
-  end
+  
 end

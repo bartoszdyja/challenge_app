@@ -4,8 +4,14 @@ Rails.application.routes.draw do
   root to: 'questions#index'
 
   resources :questions do
-    resources :answers, only: [:create]
-  end
+    resources :answers, only: [:create, :upvote] do
+      member do
+        put "like", to: "answers#upvote"
+      end
+    end
+  end 
+
+
 
   resources :users, only: [:show]
 
