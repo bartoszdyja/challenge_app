@@ -8,6 +8,8 @@ class QuestionsController < ApplicationController
 
   def show
     @answer = Answer.new
+    count=@question.countclick+1
+    @question.update(countclick: count)
   end
 
   def new

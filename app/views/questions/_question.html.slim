@@ -1,11 +1,9 @@
 tr
 	th.col-sm-1
-		' VOTES
+		=question.countclick
 	th.col-sm-1
-		' ANSWERS	
-	th.col-sm-4
+		=question.answers.count
+	th.col-sm-10
 		=link_to question.title, question_path(question)
 
-	th
-		' dsf
 
