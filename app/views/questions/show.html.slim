@@ -3,7 +3,10 @@
     h2= @question.title
     hr
     .col-md-1
-      ' asdf
+      -if @question.answerable
+        'Add your solution
+      -else
+        'Answered!
     .col-md-8
 
       p
@@ -12,7 +15,7 @@
       .links
         = link_to 'Edit', edit_question_path(@question)
         '  |
-        = link_to 'Delete', question_path(@question, method: :delete)
+        = link_to 'Delete', question_path(@question), data: { confirm: 'Are you sure?' }, method: :delete
     .col-md-3
       = render "details", question: @question
       ' Viewed
@@ -20,7 +23,7 @@
       '  times
   .col-md-12    
     hr
-      h2
+      h4
         =pluralize(@question.answers.count, 'Answer')
     hr
     =render @question.answers
@@ -33,5 +36,3 @@
       = f.text_area :contents
 
     .actions= f.submit 'Save'
-
-  

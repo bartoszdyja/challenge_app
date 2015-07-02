@@ -1,10 +1,15 @@
 .answer id="answer-#{answer.id}"
-  .contents= answer.id
-  .details
+  .contents.col-sm-1
+    =answer.votes_for.count
+    =link_to ' Like', like_question_answer_path(@question, answer), method: :put
+    =link_to ' Accept', accept_question_answer_path(@question, answer), method: :put
+  .details.col-sm-8
+    = answer.contents
+  .col-sm-3 
     '  Answered on
     = l(answer.created_at, format: :long)
     '  by
     = link_to answer.user, user_path(answer.user)
-=link_to 'Like', like_question_answer_path(@question, answer), method: :put
-=answer.votes_for.count
+  .clearfix
+  hr
 

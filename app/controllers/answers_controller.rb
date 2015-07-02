@@ -1,6 +1,7 @@
 class AnswersController < ApplicationController
   before_action :authenticate_user!
   before_action :set_question
+  before_action :set_answer, only: [:upvote, :accept]
 
   def create
     @answer = Answer.new(answer_params)
@@ -15,16 +16,24 @@ class AnswersController < ApplicationController
   end
 
   def upvote
-    @answer = Answer.find(params[:id])
     @answer.upvote_by current_user
-    @question = Question.find(params[:question_id])
     redirect_to question_path(@question)
   end
 
+  def accept
+    @answer.update(accepted: true)
+    redirect_to question_path(@question), notice: "Answer was accepted."
+  end
+
   private
+    
 
     def set_question
       @question = Question.find(params[:question_id])
+    end
+
+    def set_answer
+      @answer = Answer.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

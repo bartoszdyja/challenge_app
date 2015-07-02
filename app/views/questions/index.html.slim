@@ -7,5 +7,5 @@ table.table.table-condensed.table-striped
 			td Answers
 			td Title
 	= render @questions
-
-= link_to 'New Question', new_question_path
+-if user_signed_in?
+	= link_to 'New Question', new_question_path

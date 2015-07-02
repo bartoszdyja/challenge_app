@@ -7,4 +7,8 @@ class Question < ActiveRecord::Base
   def click
   	self.increment! :countclick
   end
+
+  def answerable
+  	self.answers.where(accepted: true).blank?
+  end
 end

@@ -12,9 +12,9 @@ nav.navbar.navbar-default role="navigation"
     #bs-example-navbar-collapse-1.collapse.navbar-collapse
       ul.nav.navbar-nav.navbar-right
         - if user_signed_in?
-          ' Welcome,
           li
-            a href="#"  Link= current_user.username
+          ' Welcome,
+          =current_user.username
           '  |
           = link_to "Edit profile", edit_user_registration_path
           '  |

@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     resources :answers, only: [:create, :upvote] do
       member do
         put "like", to: "answers#upvote"
+        put "accept", to: "answers#accept"
       end
     end
   end 
