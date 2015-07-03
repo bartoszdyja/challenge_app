@@ -1,8 +1,9 @@
 .answer id="answer-#{answer.id}"
   .contents.col-sm-1
     =answer.votes_for.count
-    =link_to ' Like', like_question_answer_path(@question, answer), method: :put
-    =link_to ' Accept', accept_question_answer_path(@question, answer), method: :put
+    =link_to ' Like', like_question_answer_path(@question, answer), method: :put, remote: true
+    -if @question.answerable && current_user==@question.user
+      =link_to ' Accept', accept_question_answer_path(@question, answer), method: :put
   .details.col-sm-8
     = answer.contents
   .col-sm-3 

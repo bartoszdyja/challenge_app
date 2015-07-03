@@ -28,11 +28,11 @@
     hr
     =render @question.answers
 
+  -if @question.answerable
+    h3 Add answer
+    = form_for [@question, @answer] do |f|
+      .field
+        = f.label :contents
+        = f.text_area :contents
 
-  h3 Add answer
-  = form_for [@question, @answer] do |f|
-    .field
-      = f.label :contents
-      = f.text_area :contents
-
-    .actions= f.submit 'Save'
+      .actions= f.submit 'Save'

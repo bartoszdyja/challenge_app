@@ -8,7 +8,7 @@ class AnswersController < ApplicationController
     @answer.user = current_user
     @answer.question = @question
 
-    if @answer.save
+    if @question.answerable && @answer.save
       redirect_to question_path(@question), notice: "Answer was successfully created."
     else
       redirect_to question_path(@question), alert: "There was an error when adding answer."
@@ -17,7 +17,10 @@ class AnswersController < ApplicationController
 
   def upvote
     @answer.upvote_by current_user
-    redirect_to question_path(@question)
+    respond_to do |format|
+      format.html { redirect_to question_path(@question), notice: "Thank you for liking" }
+      format.js {}
+    end
   end
 
   def accept
