@@ -18,3 +18,7 @@
         = render 'answer', answer: answer
     - else
       '  This user has not added any answers.
+
+  = render partial: 'avatars/form',
+           object: @user,
+           as: :avatarable

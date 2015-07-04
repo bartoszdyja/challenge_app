@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 20150701080210) do
     t.text     "contents"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "accepted",    default: false
+    t.boolean  "accepted"
   end
 
   add_index "answers", ["question_id"], name: "index_answers_on_question_id"

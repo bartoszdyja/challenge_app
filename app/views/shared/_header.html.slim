@@ -18,6 +18,8 @@ nav.navbar.navbar-default role="navigation"
           '  |
           = link_to "Edit profile", edit_user_registration_path
           '  |
+          = link_to "Show profile", user_path(current_user)
+          '  |
           = link_to "Sign out", destroy_user_session_path, method: :delete
         - else
           li
