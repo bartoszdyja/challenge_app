@@ -28,7 +28,7 @@
     hr
     =render @question.answers
 
-  -if @question.answerable
+  -if @question.answerable && user_signed_in?
     h3 Add answer
     = form_for [@question, @answer] do |f|
       .field
