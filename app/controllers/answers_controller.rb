@@ -5,9 +5,11 @@ class AnswersController < ApplicationController
   def create
     @answer = Answer.new(answer_params)
     @answer.user = current_user
+    @answer.user.points += 25
     @answer.question = @question
 
-    if @question.answerable && @answer.save
+
+    if @question.answerable && @answer.save && @answer.user.save
       redirect_to question_path(@question), notice: "Answer was successfully created."
     else
       redirect_to question_path(@question), alert: "There was an error when adding answer."
@@ -23,7 +25,9 @@ class AnswersController < ApplicationController
   end
 
   def accept
-    @answer.update(accepted: true)
+    @answer.accepted = true
+    @answer.user.points +=100
+    @answer.user.save
     redirect_to question_path(@question), notice: "Answer was accepted."
   end
 

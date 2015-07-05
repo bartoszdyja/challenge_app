@@ -8,6 +8,14 @@ h2 Edit Profile
     = f.email_field :email, autofocus: true
 
   .field
+    = f.label :username
+    = f.text_field :username
+
+  .field
+    = f.label :avatar
+    = f.file_field :avatar
+
+  .field
     = f.label :password
     .hint
       ' (leave blank if you don't want to change it)

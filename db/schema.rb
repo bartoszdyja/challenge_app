@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150704115415) do
+ActiveRecord::Schema.define(version: 20150705124833) do
 
   create_table "answers", force: true do |t|
     t.integer  "question_id"
@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 20150704115415) do
     t.text     "contents"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "accepted"
+    t.boolean  "accepted",    default: false
   end
 
   add_index "answers", ["question_id"], name: "index_answers_on_question_id"
@@ -37,13 +37,15 @@ ActiveRecord::Schema.define(version: 20150704115415) do
   add_index "questions", ["user_id"], name: "index_questions_on_user_id"
 
   create_table "users", force: true do |t|
-    t.string   "email",              default: "", null: false
-    t.string   "encrypted_password", default: "", null: false
+    t.string   "email",              default: "",  null: false
+    t.string   "encrypted_password", default: "",  null: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "username"
     t.string   "provider"
     t.string   "uid"
+    t.integer  "points",             default: 100
+    t.string   "avatar"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
