@@ -10,7 +10,7 @@
     .col-md-8
 
       p
-        = @question.contents
+        = markdown @question.contents
 
       .links
         = link_to 'Edit', edit_question_path(@question)

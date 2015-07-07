@@ -19,6 +19,7 @@ gem 'acts_as_votable', '~> 0.10.0'
 gem 'bootstrap-sass', '~> 3.3.5.1'
 gem 'carrierwave'
 gem 'mini_magick', '3.8.0'
+gem 'redcarpet'
 
 # doc
 gem 'sdoc', '~> 0.4.0',          group: :doc

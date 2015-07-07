@@ -5,7 +5,7 @@
     -if @question.answerable && current_user==@question.user
       =link_to ' Accept', accept_question_answer_path(@question, answer), method: :put
   .details.col-sm-8
-    = answer.contents
+    = markdown answer.contents
   .col-sm-3 
     '  Answered on
     = l(answer.created_at, format: :long)

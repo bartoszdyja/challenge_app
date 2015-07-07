@@ -4,6 +4,6 @@ tr
 	th.col-sm-1
 		=question.answers.count
 	th.col-sm-10.blue
-		=link_to question.title, question_path(question)
+		=link_to markdown(question.title), question_path(question)
 
 
