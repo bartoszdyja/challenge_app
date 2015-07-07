@@ -2,9 +2,9 @@ class UserMailer < ActionMailer::Base
   default from: "from@example.com"
   
 
-  def welcome_email(user)
+  def accept_email(user)
     @user = user
     @url  = 'http://example.com/login'
-    mail(to: "to@example.com", subject: 'Welcome to My Awesome Site')
+    mail(to: "to@example.com", subject: 'Your answer has been accepted')
   end
 end

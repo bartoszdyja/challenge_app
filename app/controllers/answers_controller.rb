@@ -28,6 +28,7 @@ class AnswersController < ApplicationController
     @answer.accepted = true
     @answer.user.points +=100
     @answer.user.save
+    UserMailer.accept_email(@user).deliver_later
     redirect_to question_path(@question), notice: "Answer was accepted."
   end
 
