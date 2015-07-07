@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # core
-gem 'rails', '4.1.1'
+gem 'rails'
 gem 'sqlite3'
 gem 'devise'
 gem 'omniauth', '~> 1.2.2'
