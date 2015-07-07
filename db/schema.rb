@@ -13,7 +13,7 @@
 
 ActiveRecord::Schema.define(version: 20150705124833) do
 
-  create_table "answers", force: true do |t|
+  create_table "answers", force: :cascade do |t|
     t.integer  "question_id"
     t.integer  "user_id"
     t.text     "contents"
@@ -25,39 +25,39 @@ ActiveRecord::Schema.define(version: 20150705124833) do
   add_index "answers", ["question_id"], name: "index_answers_on_question_id"
   add_index "answers", ["user_id"], name: "index_answers_on_user_id"
 
-  create_table "questions", force: true do |t|
-    t.string   "title"
+  create_table "questions", force: :cascade do |t|
+    t.string   "title",      limit: 255
     t.text     "contents"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
-    t.integer  "countclick", default: 0
+    t.integer  "countclick",             default: 0
   end
 
   add_index "questions", ["user_id"], name: "index_questions_on_user_id"
 
-  create_table "users", force: true do |t|
-    t.string   "email",              default: "",  null: false
-    t.string   "encrypted_password", default: "",  null: false
+  create_table "users", force: :cascade do |t|
+    t.string   "email",              limit: 255, default: "",  null: false
+    t.string   "encrypted_password", limit: 255, default: "",  null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "username"
-    t.string   "provider"
-    t.string   "uid"
-    t.integer  "points",             default: 100
+    t.string   "username",           limit: 255
+    t.string   "provider",           limit: 255
+    t.string   "uid",                limit: 255
+    t.integer  "points",                         default: 100
     t.string   "avatar"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["username"], name: "index_users_on_username", unique: true
 
-  create_table "votes", force: true do |t|
+  create_table "votes", force: :cascade do |t|
     t.integer  "votable_id"
-    t.string   "votable_type"
+    t.string   "votable_type", limit: 255
     t.integer  "voter_id"
-    t.string   "voter_type"
+    t.string   "voter_type",   limit: 255
     t.boolean  "vote_flag"
-    t.string   "vote_scope"
+    t.string   "vote_scope",   limit: 255
     t.integer  "vote_weight"
     t.datetime "created_at"
     t.datetime "updated_at"

@@ -1,9 +1,11 @@
 .answer id="answer-#{answer.id}"
   .contents.col-sm-1
-    =answer.votes_for.count
+    = pluralize answer.votes_for.count, "like"
     =link_to ' Like', like_question_answer_path(@question, answer), method: :put, remote: true
     -if @question.answerable && current_user==@question.user
       =link_to ' Accept', accept_question_answer_path(@question, answer), method: :put
+    -elsif answer.accepted
+      'Accepted
   .details.col-sm-8
     = markdown answer.contents
   .col-sm-3 
@@ -13,4 +15,3 @@
     = link_to answer.user, user_path(answer.user)
   .clearfix
   hr
-

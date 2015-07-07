@@ -18,6 +18,8 @@ class AnswersController < ApplicationController
 
   def upvote
     @answer.upvote_by current_user
+    @answer.user.points +=5
+    @answer.user.save
     respond_to do |format|
       format.html { redirect_to question_path(@question), notice: "Thank you for liking" }
       format.js {}
@@ -25,7 +27,7 @@ class AnswersController < ApplicationController
   end
 
   def accept
-    @answer.accepted = true
+    @answer.update(accepted: true)
     @answer.user.points +=100
     @answer.user.save
     UserMailer.accept_email(@user).deliver_later
